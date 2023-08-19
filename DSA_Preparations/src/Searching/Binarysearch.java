@@ -1,6 +1,7 @@
 package Searching;
+
 import java.util.Scanner;
-public class Linearsearch {
+public class Binarysearch {
 
 	public static void main(String[] args) {
 		
@@ -19,19 +20,28 @@ public class Linearsearch {
 		System.out.print("Element to search: ");
 		double searchelement=input.nextDouble();
 		
-		System.out.print("Element present: "+linearsearch(array,searchelement));
+		System.out.print("Element present: "+binarysearch(array,searchelement));
 		
 		
 	}
 	
-	public static boolean linearsearch(double array[],double searchelement) {
+	public static boolean binarysearch(double array[],double searchelement) {
 		
-		int size=array.length;
-		while(size-->0) {
-			if(array[size]==searchelement)
+		int lowerpoint=0,higherpoint=array.length-1,middle;
+		
+		while(lowerpoint<=higherpoint) {
+			middle=(lowerpoint+higherpoint)/2;
+			
+			if(array[middle]==searchelement)
 				return true;
+			else if(array[middle]>searchelement)
+				higherpoint=middle-1;
+			else
+				lowerpoint=middle+1;
 		}
+		
 		return false;
 	}
 
 }
+
