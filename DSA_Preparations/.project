@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/Set1/Set-1.pdf</name>
+			<type>1</type>
+			<location>C:/Users/kesha/git/DSA_Preparations/DSA_Preparations/src/Set1/Set-1.pdf</location>
+		</link>
+	</linkedResources>
 </projectDescription>
