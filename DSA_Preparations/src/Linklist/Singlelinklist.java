@@ -169,6 +169,99 @@ public class Singlelinklist<t> {
 	}
 	
 	
+	public void reverseList() {
+		
+		if(head==null)
+			System.out.println("Emptylist");
+		else if(head.next==null)
+			return;
+		else {
+			Node prevNode=head;
+			Node currNode=head.next;
+			while(currNode.next!=null) {
+				Node nextNode=currNode.next;
+				currNode.next=prevNode;
+				prevNode=currNode;
+				currNode=nextNode;
+			}
+			currNode.next=prevNode;
+			head.next=null;
+			head=currNode;
+		}
+	}
+	
+//	public Node<t> searchElement(int index) throws Exception {
+//		
+//		if(head==null)
+//			return head;
+//		
+//		try {
+//			if (index>count() || index<1)
+//				throw new Exception("Index not found");
+//		}catch(Exception e) {
+//			System.out.println(e);
+//			System.out.print("Re-enter index");
+//			index=input.nextInt();
+//			
+//			if(index>count()||index<1) {
+//				throw new Exception("Index not found");
+//			}
+//		}
+//		
+//		int currentindex=0;
+//		Node<t> temporary=head;
+//		while(currentindex!=index-1) {
+//			temporary=temporary.next;
+//		}
+//		
+//		return temporary;
+//	}
+	
+	public Node<t> searchElement(int index) {
+	    if (head == null || index < 1 || index > count()) {
+	        return null; 
+	    }
+
+	    int currentindex = 1;
+	    Node<t> temporary = head;
+	    while (currentindex != index) {
+	        currentindex++;
+	        temporary = temporary.next;
+	    }
+
+	    return temporary;
+	}
+
+	
+//	public void palindromic() throws Exception {
+//		int count=count();
+//		for(int i=0;i<count/2;i++){
+//			if(searchElement(i+1).data!=searchElement(count-i).data) {
+//				System.out.println("Not a palindromic list");
+//				return;
+//			}	
+//		}
+//		System.out.println("palindromic list");
+//		
+//	}
+	
+	public void palindromic() throws Exception {
+		
+		int middlecount=count()%2==0?count()+1:count()+2;
+		Node<t> start=head;
+		Node<t> middle=searchElement(middlecount);
+		
+		while(middle!=null) {
+			if(start.data!=middle.data) {
+				System.out.println("Not a palindromic list");
+				return;
+			}
+			start=start.next;
+			middle=middle.next;
+		}
+		System.out.println("palindromic list");
+		
+	}
 
 	
 

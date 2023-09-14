@@ -6,7 +6,6 @@ public class Implementation {
 		// TODO Auto-generated method stub
 		Singlelinklist<Integer> a=new Singlelinklist<Integer>();
 		
-		a.addFirst(5);
 		a.addFirst(4);
 		a.addFirst(3);
 		a.addFirst(2);
@@ -14,12 +13,12 @@ public class Implementation {
 		
 		a.transversal();
 		
-		a.addLast(5);
-		a.addLast(4);
+		a.addLast(3);
+		a.addLast(2);
 		
 		System.out.println(a.count());
-		a.add(6, 8);
-		
+		a.add(1, 7);
+		a.palindromic();
 		a.transversal();
 		
 		a.remove(8);
@@ -31,6 +30,12 @@ public class Implementation {
 		a.remove(3);
 		a.remove(8);
 		a.transversal();
+		
+		a.reverseList();
+		a.transversal();
+		
+		a.searchElement(3);
+		System.out.println(a.searchElement(1).data);
 
 	}
 
