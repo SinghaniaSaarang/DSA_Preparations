@@ -4,8 +4,9 @@ public class Implementation {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
-		Singlelinklist<Integer> a=new Singlelinklist<Integer>();
+//		Singlelinklist<Integer> a=new Singlelinklist<Integer>();
 //		CircularLinkList<Integer> a=new CircularLinkList<Integer>();
+		DoubleLinkList<Integer> a=new DoubleLinkList<Integer>();
 		
 		a.addFirst(4);
 		a.addFirst(3);
@@ -31,11 +32,11 @@ public class Implementation {
 //		a.remove(8);
 		a.transversal();
 		
-		a.reverseList();
-		a.transversal();
+//		a.reverseList();
+//		a.transversal();
 		
 //		a.searchElement(3);
-		System.out.println(a.searchElement(1).data);
+//		System.out.println(a.searchElement(1).data);
 
 	}
 
