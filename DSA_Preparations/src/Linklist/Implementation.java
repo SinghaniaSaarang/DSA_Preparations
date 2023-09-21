@@ -5,6 +5,7 @@ public class Implementation {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		Singlelinklist<Integer> a=new Singlelinklist<Integer>();
+//		CircularLinkList<Integer> a=new CircularLinkList<Integer>();
 		
 		a.addFirst(4);
 		a.addFirst(3);
@@ -18,7 +19,6 @@ public class Implementation {
 		
 		System.out.println(a.count());
 		a.add(1, 7);
-		a.palindromic();
 		a.transversal();
 		
 		a.remove(8);
@@ -28,13 +28,13 @@ public class Implementation {
 		a.remove(1);
 		a.transversal();
 		a.remove(3);
-		a.remove(8);
+//		a.remove(8);
 		a.transversal();
 		
 		a.reverseList();
 		a.transversal();
 		
-		a.searchElement(3);
+//		a.searchElement(3);
 		System.out.println(a.searchElement(1).data);
 
 	}

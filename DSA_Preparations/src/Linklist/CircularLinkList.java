@@ -1,25 +1,28 @@
 package Linklist;
 import java.util.Scanner;
-public class Singlelinklist<t> {
+public class CircularLinkList<t> {
 
 	Scanner input=new Scanner(System.in);
 	
-	Node<t> head;
+	Node<t> head,tail;
 	
-	public Singlelinklist() {
-		// TODO Auto-generated constructor stub
+	public CircularLinkList() {
 		this.head=null;
+		this.tail=null;
 	}
 	
 	public void addFirst(t element) {
 		
 		Node<t> firstnode=new Node<t>(element);
 		
-		if(head==null)
-			head=firstnode;
+		if(head==null) {
+			head=tail=firstnode;
+			tail.next=head;
+		}
 		else {
 		firstnode.next=head;
 		head=firstnode;
+		tail.next=head;
 		}
 		
 	}
@@ -28,15 +31,14 @@ public class Singlelinklist<t> {
 		
 		Node<t> lastnode=new Node<t>(element);
 		
-		if(head==null)
-			head=lastnode;
+		if(head==null) {
+			head=tail=lastnode;
+			tail.next=head;
+		}
 		else {
-			Node<t> temporary=head;
-			
-			while(temporary.next!=null) {
-				temporary=temporary.next;
-			}
-			temporary.next=lastnode;
+			tail.next=lastnode;
+			tail=lastnode;
+			tail.next=head;
 		}
 		
 	}
@@ -48,7 +50,7 @@ public class Singlelinklist<t> {
 			if(head==null && index!=1) {
 				throw new Exception("Emptylist, press 1 to add at first");
 			}else if(index>count()+1){
-				throw new Exception("index not found!");
+				throw new Exception("index not found!Greater than size");
 			}else if(index<1) {
 				throw new Exception("index not found! negative or zero");
 			}
@@ -87,9 +89,11 @@ public class Singlelinklist<t> {
 		
 		Node<t> temporary=head;
 		
-		while(temporary!=null) {
-			totalnodes++;
-			temporary=temporary.next;
+		if(head!=null) {
+			do {
+				totalnodes++;
+				temporary=temporary.next;
+			}while(temporary!=head);
 		}
 		return totalnodes;
 	}
@@ -99,10 +103,10 @@ public class Singlelinklist<t> {
 		if(head!=null) {
 			Node<t> temporary=head;
 			
-			while(temporary!=null) {
+			do{
 				System.out.print(temporary.data+" ");
 				temporary=temporary.next;
-			}
+			}while(temporary!=head); 
 			
 			System.out.println();
 		}else
@@ -110,8 +114,10 @@ public class Singlelinklist<t> {
 	}
 	
 	public void removeFirst() {
-		if(head!=null)
+		if(head!=null) {
 			head=head.next;
+			tail.next=head;
+		}
 		else
 			System.out.println("Emptylist");
 	}
@@ -120,15 +126,17 @@ public class Singlelinklist<t> {
 		if(head==null)
 			System.out.println("Emptylist");
 		else if(head.next==null) {
-			head=null;
+			head=tail=null;
 			System.out.println("Now list is empty");
 		}else {
 			Node<t> temporary=head;
 			
-			while(temporary.next.next!=null) {
+			while(temporary.next!=tail) {
 				temporary=temporary.next;
 			}
-			temporary.next=null;
+			tail=temporary;
+			tail.next=head;
+			
 		}
 	}
 	
@@ -173,19 +181,20 @@ public class Singlelinklist<t> {
 		
 		if(head==null)
 			System.out.println("Emptylist");
-		else if(head.next==null)
+		else if(head.next==head)
 			return;
 		else {
-			Node prevNode=head;
-			Node currNode=head.next;
-			while(currNode.next!=null) {
-				Node nextNode=currNode.next;
+			Node<t> prevNode=head;
+			Node<t> currNode=head.next;
+			while(currNode.next!=head) {
+				Node<t> nextNode=currNode.next;
 				currNode.next=prevNode;
 				prevNode=currNode;
 				currNode=nextNode;
 			}
 			currNode.next=prevNode;
-			head.next=null;
+			head.next=tail;
+			tail=head;
 			head=currNode;
 		}
 	}
@@ -206,6 +215,7 @@ public class Singlelinklist<t> {
 	    return temporary;
 	}
 
+	
 
 	
 
